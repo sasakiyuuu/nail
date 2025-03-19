@@ -829,7 +829,6 @@
     </footer>
 
     <script>
-        // ヘッダーのスクロールエフェクト
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -839,7 +838,6 @@
             }
         });
         
-        // ギャラリーのスクロールアニメーション
         document.addEventListener('DOMContentLoaded', function() {
             const galleryItems = document.querySelectorAll('.gallery-item');
             
@@ -857,7 +855,6 @@
             galleryItems.forEach(item => {
                 observer.observe(item);
                 
-                // 初期表示時にディレイをつける
                 item.style.transitionDelay = `${Array.from(galleryItems).indexOf(item) * 0.1}s`;
             });
         });
