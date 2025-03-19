@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMY | ネイルサロン</title>
+    <title>AMY - ネイルサロン</title>
     <style>
+        :root {
+            --primary-color: #ff6b9c;
+            --secondary-color: #f5f5f5;
+            --accent-color: #9c27b0;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica', 'Arial', sans-serif;
         }
         
         body {
-            background-color: #f8f5f2;
-            color: #333;
-            overflow-x: hidden;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
         
         .container {
@@ -26,180 +34,133 @@
         
         header {
             background-color: #fff;
-            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
         }
         
-        header.scrolled {
-            padding: 10px 0;
-        }
-        
-        .header-content {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
         
         .logo {
-            font-size: 42px;
-            font-weight: 900;
-            color: #ff6b6b;
-            letter-spacing: 3px;
-            position: relative;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
             transition: all 0.3s ease;
         }
         
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #ff6b6b;
-            transition: width 0.5s ease;
+        .logo:hover {
+            transform: scale(1.05);
         }
         
-        .logo:hover::after {
-            width: 100%;
-        }
-        
-        nav ul {
+        .nav-links {
             display: flex;
             list-style: none;
         }
         
-        nav ul li {
+        .nav-links li {
             margin-left: 30px;
         }
         
-        nav ul li a {
+        .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
-            font-size: 16px;
             position: relative;
             transition: all 0.3s ease;
         }
         
-        nav ul li a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #ff6b6b;
+            background-color: var(--primary-color);
             transition: width 0.3s ease;
         }
         
-        nav ul li a:hover {
-            color: #ff6b6b;
+        .nav-links a:hover::after {
+            width: 100%;
         }
         
-        nav ul li a:hover::after {
-            width: 100%;
+        .hamburger {
+            display: none;
+            cursor: pointer;
         }
         
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffeef3 100%);
+            padding: 150px 0 100px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 80px;
         }
         
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('/api/placeholder/1200/800');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.8;
-            z-index: -1;
-        }
-        
-        .hero-content {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 40px;
-            border-radius: 10px;
-            max-width: 800px;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.5s;
-        }
-        
-        .hero-content h1 {
-            font-size: 48px;
-            font-weight: 900;
+        .hero h1 {
+            font-size: 50px;
             margin-bottom: 20px;
-            color: #ff6b6b;
+            color: var(--primary-color);
+            animation: fadeIn 1s ease-in-out;
         }
         
-        .hero-content p {
+        .hero p {
             font-size: 18px;
             margin-bottom: 30px;
-            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1s ease-in-out 0.3s backwards;
         }
         
         .btn {
             display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-text);
             padding: 12px 30px;
-            background-color: #ff6b6b;
-            color: #fff;
-            text-decoration: none;
             border-radius: 30px;
-            font-weight: 700;
+            text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
-            border: 2px solid #ff6b6b;
+            border: none;
+            cursor: pointer;
+            animation: fadeIn 1s ease-in-out 0.6s backwards;
         }
         
         .btn:hover {
-            background-color: transparent;
-            color: #ff6b6b;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
         }
         
         .services {
             padding: 100px 0;
-            background-color: #fff;
+            text-align: center;
         }
         
         .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
             font-size: 36px;
-            font-weight: 900;
-            color: #333;
+            margin-bottom: 50px;
+            color: var(--primary-color);
             position: relative;
             display: inline-block;
-            padding-bottom: 15px;
         }
         
-        .section-title h2::after {
+        .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 50px;
             height: 3px;
-            background-color: #ff6b6b;
+            background-color: var(--primary-color);
         }
         
         .services-grid {
@@ -209,8 +170,8 @@
         }
         
         .service-card {
-            background-color: #f8f5f2;
-            border-radius: 10px;
+            background-color: #fff;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -218,7 +179,7 @@
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
         
         .service-img {
@@ -230,7 +191,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.5s ease;
+            transition: transform 0.5s ease;
         }
         
         .service-card:hover .service-img img {
@@ -238,31 +199,29 @@
         }
         
         .service-content {
-            padding: 20px;
+            padding: 25px;
         }
         
         .service-content h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #ff6b6b;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
         }
         
         .service-content p {
-            font-size: 16px;
-            line-height: 1.6;
             margin-bottom: 15px;
         }
         
-        .price {
-            font-weight: 700;
-            color: #333;
-            font-size: 18px;
-            margin-bottom: 15px;
+        .service-price {
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--accent-color);
         }
         
         .gallery {
             padding: 100px 0;
-            background-color: #f8f5f2;
+            background-color: #fff;
+            text-align: center;
         }
         
         .gallery-grid {
@@ -272,239 +231,243 @@
         }
         
         .gallery-item {
-            position: relative;
             overflow: hidden;
             border-radius: 10px;
+            position: relative;
             height: 250px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s;
-        }
-        
-        .gallery-item.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.5s ease;
+            transition: transform 0.5s ease;
         }
         
         .gallery-item:hover img {
             transform: scale(1.1);
         }
         
-        .gallery-item::after {
-            content: '';
+        .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 107, 107, 0.7);
+            background-color: rgba(255, 107, 156, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: opacity 0.5s ease;
         }
         
-        .gallery-item:hover::after {
+        .gallery-item:hover .gallery-overlay {
             opacity: 1;
+        }
+        
+        .gallery-overlay span {
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
         
         .booking {
             padding: 100px 0;
-            background-color: #fff;
+            text-align: center;
         }
         
         .booking-form {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            background-color: #f8f5f2;
+            background-color: #fff;
             padding: 40px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .form-group {
             margin-bottom: 20px;
+            text-align: left;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .form-control {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
             transition: all 0.3s ease;
         }
         
         .form-control:focus {
+            border-color: var(--primary-color);
             outline: none;
-            border-color: #ff6b6b;
-            box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+            box-shadow: 0 0 0 2px rgba(255, 107, 156, 0.2);
         }
         
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -10px;
+        .testimonials {
+            padding: 100px 0;
+            background-color: #fff5f7;
+            text-align: center;
         }
         
-        .form-col {
-            flex: 1;
-            padding: 0 10px;
-            min-width: 200px;
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
         }
         
         .contact {
             padding: 100px 0;
-            background-color: #f8f5f2;
+            background-color: #fff;
+            text-align: center;
         }
         
         .contact-info {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
-            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 50px;
         }
         
-        .contact-card {
-            flex: 1;
-            min-width: 250px;
-            background-color: #fff;
-            padding: 30px;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background-color: #fff5f7;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            text-align: center;
             transition: all 0.3s ease;
         }
         
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .contact-icon {
-            font-size: 40px;
-            color: #ff6b6b;
-            margin-bottom: 20px;
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-right: 15px;
         }
         
-        .contact-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
+        .contact-text {
+            text-align: left;
         }
         
-        .contact-card p {
-            font-size: 16px;
-            line-height: 1.6;
+        .contact-text h4 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .contact-map {
+            height: 400px;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
         }
         
         footer {
-            background-color: #333;
+            background-color: #2d3436;
             color: #fff;
             padding: 50px 0 20px;
         }
         
         .footer-content {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
             margin-bottom: 30px;
         }
         
-        .footer-col {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 30px;
-            padding: 0 15px;
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
         
-        .footer-col h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: #ff6b6b;
-        }
-        
-        .footer-col p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-col ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-col ul li a:hover {
-            color: #ff6b6b;
-            padding-left: 5px;
-        }
-        
-        .social-links {
+        .footer-social {
             display: flex;
-            margin-top: 20px;
+            gap: 15px;
+            margin-top: 15px;
         }
         
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .social-icon {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #444;
-            color: #fff;
-            margin-right: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
             text-decoration: none;
             transition: all 0.3s ease;
         }
         
-        .social-links a:hover {
-            background-color: #ff6b6b;
-            transform: translateY(-5px);
+        .footer-links a:hover {
+            color: var(--primary-color);
         }
         
-        .footer-bottom {
+        .copyright {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid #444;
-        }
-        
-        .footer-bottom p {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
+            color: #aaa;
         }
         
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -516,118 +479,125 @@
         }
         
         @media (max-width: 768px) {
-            .header-content {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: #fff;
                 flex-direction: column;
-                text-align: center;
+                align-items: center;
+                padding: 40px 0;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.5s ease;
             }
             
-            nav ul {
-                margin-top: 20px;
+            .nav-links.active {
+                right: 0;
             }
             
-            nav ul li {
-                margin: 0 10px;
+            .nav-links li {
+                margin: 15px 0;
             }
             
-            .hero-content h1 {
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
                 font-size: 36px;
             }
             
-            .hero-content p {
+            .hero p {
                 font-size: 16px;
             }
             
-            .section-title h2 {
-                font-size: 28px;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
             
-            .service-card {
-                margin-bottom: 20px;
+            .footer-content {
+                flex-direction: column;
             }
-            
-            .form-col {
-                flex: 100%;
-                margin-bottom: 15px;
-            }
+        }
+        
+        /* Animation for elements */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <header id="header">
+    <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">AMY</div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">ホーム</a></li>
-                        <li><a href="#services">サービス</a></li>
-                        <li><a href="#gallery">ギャラリー</a></li>
-                        <li><a href="#booking">予約</a></li>
-                        <li><a href="#contact">お問い合わせ</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <nav>
+                <a href="#" class="logo">AMY</a>
+                <ul class="nav-links">
+                    <li><a href="#services">メニュー</a></li>
+                    <li><a href="#gallery">ギャラリー</a></li>
+                    <li><a href="#booking">予約</a></li>
+                    <li><a href="#testimonials">口コミ</a></li>
+                    <li><a href="#contact">アクセス</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
+    <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>AMY NAIL SALON</h1>
-                <p>洗練されたデザインと最高級のサービスで、あなたの指先を芸術作品に。<br>モダンでトレンディなネイルアートを提供する東京のプレミアムネイルサロン</p>
-                <a href="#booking" class="btn">今すぐ予約する</a>
-            </div>
+            <h1>AMY</h1>
+            <p>トレンドを先取りする洗練されたネイルデザインで、あなたの指先から美しさを引き出します。</p>
+            <a href="#booking" class="btn">今すぐ予約する</a>
         </div>
     </section>
 
     <section id="services" class="services">
         <div class="container">
-            <div class="section-title">
-                <h2>OUR SERVICES</h2>
-            </div>
+            <h2 class="section-title fade-in">メニュー</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-img">
                         <img src="/api/placeholder/400/300" alt="ジェルネイル">
                     </div>
                     <div class="service-content">
-                        <h3>✨ ジェルネイル</h3>
-                        <p>トレンドを取り入れた最新のデザインから、上品なオフィスネイルまで幅広く対応。高品質なジェルを使用し、長持ちするネイルを実現します。</p>
-                        <div class="price">¥6,000〜</div>
+                        <h3>ジェルネイル</h3>
+                        <p>高品質なジェルを使用し、長持ちするツヤのある仕上がりを実現します。豊富なカラーバリエーションからお選びいただけます。</p>
+                        <div class="service-price">¥6,000〜</div>
                         <a href="#booking" class="btn">予約する</a>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="スカルプチャー">
+                        <img src="/api/placeholder/400/300" alt="アートネイル">
                     </div>
                     <div class="service-content">
-                        <h3>💎 スカルプチャー</h3>
-                        <p>自爪に負担をかけず、美しいフォルムを実現するスカルプチャー。長さ出しや補強など、理想の爪の形に仕上げます。</p>
-                        <div class="price">¥8,000〜</div>
+                        <h3>アートネイル</h3>
+                        <p>個性を表現するアートネイル。季節やトレンドに合わせたデザインで、あなただけの特別な一本を。</p>
+                        <div class="service-price">¥8,000〜</div>
                         <a href="#booking" class="btn">予約する</a>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="アートデザイン">
+                        <img src="/api/placeholder/400/300" alt="ケア">
                     </div>
                     <div class="service-content">
-                        <h3>🎨 アートデザイン</h3>
-                        <p>季節のトレンドや特別なイベントに合わせたオリジナルアート。繊細な手描きからストーンワークまで、個性を表現します。</p>
-                        <div class="price">¥1,000〜 / 1本</div>
-                        <a href="#booking" class="btn">予約する</a>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="ケア&トリートメント">
-                    </div>
-                    <div class="service-content">
-                        <h3>🌿 ケア&トリートメント</h3>
-                        <p>健康的な爪を育てるためのケアメニュー。角質ケア、保湿トリートメント、マッサージで、指先から美しさを引き出します。</p>
-                        <div class="price">¥4,500〜</div>
+                        <h3>ネイルケア</h3>
+                        <p>爪の健康を第一に考えたケアメニュー。甘皮処理やバッフィングなど、基本のケアからしっかりと行います。</p>
+                        <div class="service-price">¥4,000〜</div>
                         <a href="#booking" class="btn">予約する</a>
                     </div>
                 </div>
@@ -637,33 +607,43 @@
 
     <section id="gallery" class="gallery">
         <div class="container">
-            <div class="section-title">
-                <h2>GALLERY</h2>
-            </div>
+            <h2 class="section-title fade-in">ギャラリー</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン1">
+                <div class="gallery-item fade-in">
+                    <img src="/api/placeholder/400/300" alt="ネイルデザイン1">
+                    <div class="gallery-overlay">
+                        <span>春のデザイン</span>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン2">
+                <div class="gallery-item fade-in">
+                    <img src="/api/placeholder/400/300" alt="ネイルデザイン2">
+                    <div class="gallery-overlay">
+                        <span>夏のデザイン</span>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン3">
+                <div class="gallery-item fade-in">
+                    <img src="/api/placeholder/400/300" alt="ネイルデザイン3">
+                    <div class="gallery-overlay">
+                        <span>秋のデザイン</span>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン4">
+                <div class="gallery-item fade-in">
+                    <img src="/api/placeholder/400/300" alt="ネイルデザイン4">
+                    <div class="gallery-overlay">
+                        <span>冬のデザイン</span>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン5">
+                <div class="gallery-item fade-in">
+                    <img src="/api/placeholder/400/300" alt="ネイルデザイン5">
+                    <div class="gallery-overlay">
+                        <span>ブライダルネイル</span>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン6">
-                </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン7">
-                </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/300/300" alt="ネイルデザイン8">
+                <div class="gallery-item fade-in">
+                    <img src="/api/placeholder/400/300" alt="ネイルデザイン6">
+                    <div class="gallery-overlay">
+                        <span>フットネイル</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -671,108 +651,96 @@
 
     <section id="booking" class="booking">
         <div class="container">
-            <div class="section-title">
-                <h2>BOOKING</h2>
-            </div>
-            <div class="booking-form">
+            <h2 class="section-title fade-in">予約フォーム</h2>
+            <div class="booking-form fade-in">
                 <form>
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="name">お名前</label>
-                                <input type="text" id="name" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="email">メールアドレス</label>
-                                <input type="email" id="email" class="form-control" required>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" class="form-control" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="phone">電話番号</label>
-                                <input type="tel" id="phone" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="service">サービス</label>
-                                <select id="service" class="form-control" required>
-                                    <option value="">選択してください</option>
-                                    <option value="gel">ジェルネイル</option>
-                                    <option value="sculpture">スカルプチャー</option>
-                                    <option value="art">アートデザイン</option>
-                                    <option value="care">ケア&トリートメント</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" class="form-control" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="date">日付</label>
-                                <input type="date" id="date" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-col">
-                            <div class="form-group">
-                                <label for="time">時間</label>
-                                <select id="time" class="form-control" required>
-                                    <option value="">選択してください</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="18:00">18:00</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="phone">電話番号</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">希望日</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">希望時間</label>
+                        <input type="time" id="time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">メニュー</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">選択してください</option>
+                            <option value="gel">ジェルネイル</option>
+                            <option value="art">アートネイル</option>
+                            <option value="care">ネイルケア</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="message">メッセージ</label>
-                        <textarea id="message" class="form-control" rows="5"></textarea>
+                        <textarea id="message" class="form-control" rows="4"></textarea>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn">予約を確定する</button>
-                    </div>
+                    <button type="submit" class="btn">予約する</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title fade-in">お客様の声</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-item fade-in">
+                    <p class="testimonial-text">「AMYのネイルは本当に長持ちします！いつも褒められるデザインばかりで、次の予約が待ち遠しいです。」</p>
+                    <p class="testimonial-author">佐藤 美咲</p>
+                </div>
+                <div class="testimonial-item fade-in">
+                    <p class="testimonial-text">「初めてのネイルサロンでしたが、スタッフの方の親切な対応と素敵なデザインに大満足です。」</p>
+                    <p class="testimonial-author">田中 由美</p>
+                </div>
+                <div class="testimonial-item fade-in">
+                    <p class="testimonial-text">「センスの良さに脱帽です。いつもトレンドを押さえたデザインを提案してくれて、毎回楽しみにしています。」</p>
+                    <p class="testimonial-author">山田 恵子</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>CONTACT</h2>
-            </div>
+            <h2 class="section-title fade-in">アクセス</h2>
             <div class="contact-info">
-                <div class="contact-card">
+                <div class="contact-item fade-in">
                     <div class="contact-icon">📍</div>
-                    <h3>所在地</h3>
-                    <p>東京都渋谷区〇〇町1-2-3<br>AMYビル 2F</p>
+                    <div class="contact-text">
+                        <h4>住所</h4>
+                        <p>東京都渋谷区〇〇町1-2-3 〇〇ビル 3F</p>
+                    </div>
                 </div>
-                <div class="contact-card">
+                <div class="contact-item fade-in">
                     <div class="contact-icon">📞</div>
-                    <h3>電話番号</h3>
-                    <p>03-1234-5678</p>
+                    <div class="contact-text">
+                        <h4>電話番号</h4>
+                        <p>03-1234-5678</p>
+                    </div>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-icon">✉️</div>
-                    <h3>メール</h3>
-                    <p>info@amynail.jp</p>
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-text">
+                        <h4>営業時間</h4>
+                        <p>10:00 - 19:00（定休日：月曜日）</p>
+                    </div>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-icon">🕐</div>
-                    <h3>営業時間</h3>
-                    <p>平日・土曜: 10:00 - 19:00<br>日曜・祝日: 10:00 - 18:00</p>
-                </div>
+            </div>
+            <div class="contact-map fade-in">
+                <img src="/api/placeholder/1200/400" alt="サロンの地図">
             </div>
         </div>
     </section>
@@ -780,83 +748,98 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-col">
-                    <h3>AMY NAIL SALON</h3>
-                    <p>洗練されたデザインと最高級のサービスで、あなたの指先を芸術作品に。</p>
-                    <div class="social-links">
-                        <a href="#"><span>fb</span></a>
-                        <a href="#"><span>ig</span></a>
-                        <a href="#"><span>tw</span></a>
-                        <a href="#"><span>yt</span></a>
+                <div class="footer-about">
+                    <div class="footer-logo">AMY</div>
+                    <p>トレンドを先取りする洗練されたネイルデザインで、あなたの指先から美しさを引き出します。</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">📱</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">💬</a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3>メニュー</h3>
+                <div class="footer-links">
+                    <h4>メニュー</h4>
                     <ul>
-                        <li><a href="#home">ホーム</a></li>
-                        <li><a href="#services">サービス</a></li>
+                        <li><a href="#services">メニュー</a></li>
                         <li><a href="#gallery">ギャラリー</a></li>
                         <li><a href="#booking">予約</a></li>
-                        <li><a href="#contact">お問い合わせ</a></li>
+                        <li><a href="#testimonials">口コミ</a></li>
+                        <li><a href="#contact">アクセス</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>サービス</h3>
+                <div class="footer-links">
+                    <h4>サービス</h4>
                     <ul>
                         <li><a href="#">ジェルネイル</a></li>
-                        <li><a href="#">スカルプチャー</a></li>
-                        <li><a href="#">アートデザイン</a></li>
-                        <li><a href="#">ケア&トリートメント</a></li>
+                        <li><a href="#">アートネイル</a></li>
+                        <li><a href="#">ネイルケア</a></li>
+                        <li><a href="#">ブライダルネイル</a></li>
+                        <li><a href="#">フットネイル</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>ニュースレター</h3>
-                    <p>最新のキャンペーン情報やネイルのトレンドをお届けします。</p>
-                    <form>
-                        <div class="form-group">
-                            <input type="email" placeholder="メールアドレス" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn">登録する</button>
-                        </div>
-                    </form>
+                <div class="footer-links">
+                    <h4>お問い合わせ</h4>
+                    <ul>
+                        <li><a href="tel:03-1234-5678">03-1234-5678</a></li>
+                        <li><a href="mailto:info@amy-nail.com">info@amy-nail.com</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 AMY NAIL SALON. All Rights Reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2025 AMY All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
+        // ハンバーガーメニューの動作
         document.addEventListener('DOMContentLoaded', function() {
-            const galleryItems = document.querySelectorAll('.gallery-item');
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // スクロールアニメーション
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                for (let i = 0; i < fadeElements.length; i++) {
+                    const elem = fadeElements[i];
+                    const distInView = elem.getBoundingClientRect().top - window.innerHeight + 100;
+                    if (distInView < 0) {
+                        elem.classList.add('active');
+                    }
+                }
+            };
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // 初期表示
+            
+            // スムーススクロール
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            for (let i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    const targetPosition = targetElement.offsetTop - 70;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
                     }
                 });
-            }, {
-                threshold: 0.1
-            });
-            
-            galleryItems.forEach(item => {
-                observer.observe(item);
-                
-                item.style.transitionDelay = `${Array.from(galleryItems).indexOf(item) * 0.1}s`;
-            });
+            }
         });
     </script>
 </body>
