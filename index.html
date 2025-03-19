@@ -888,221 +888,188 @@
     </div>
   </section>
 
-  <!-- 予約セクション -->
-  <section id="reservation" class="section reservation">
+<!-- 予約セクション -->
+<section id="reservation" class="section reservation">
     <div class="container">
       <h2 class="section-title">ご予約</h2>
-      <div class
-      <style>
-        .form-select:focus {
-          outline: none;
-          border-color: var(--accent-color);
-        }
-  
-        .form-button {
-          display: inline-block;
-          padding: 12px 28px;
-          background-color: var(--accent-color);
-          color: var(--white);
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-decoration: none;
-          border-radius: 30px;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-  
-        .form-button:hover {
-          background-color: var(--dark-accent);
-          transform: translateY(-3px);
-          box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
-        }
-  
-        /* フッター */
-        .footer {
-          background-color: var(--primary-color);
-          padding: 50px 0;
-          text-align: center;
-          color: var(--text-color);
-        }
-  
-        .footer a {
-          color: var(--text-color);
-          text-decoration: none;
-          font-weight: 500;
-        }
-  
-        .footer a:hover {
-          color: var(--accent-color);
-        }
-  
-        .footer p {
-          margin-top: 20px;
-          font-size: 1rem;
-          color: var(--light-text);
-        }
-      </style>
-  </head>
-  
-  <body>
-    <!-- ヘッダー -->
-    <header class="header">
-      <div class="container">
-        <div class="nav-container">
-          <a href="#" class="logo">ネイルサロン <span>AMY</span></a>
-          <nav>
-            <ul class="nav-links">
-              <li><a href="#features">特徴</a></li>
-              <li><a href="#services">サービス</a></li>
-              <li><a href="#gallery">ギャラリー</a></li>
-              <li><a href="#reservation">予約</a></li>
-            </ul>
-          </nav>
-          <button class="mobile-menu-btn">☰</button>
+      <div class="reservation-container">
+        <div class="reservation-content">
+          <h3 class="reservation-title">あなたのお時間を大切に</h3>
+          <p>お客様のご都合に合わせて、簡単にご予約いただけます。ネイルケア・アートに関するご質問やご要望などございましたら、お気軽にお問い合わせください。</p>
+          <p>初めてのお客様も、リピーターの方も、心からのおもてなしでお待ちしております。</p>
         </div>
+        <form class="reservation-form">
+          <div class="form-group">
+            <label for="name" class="form-label">お名前</label>
+            <input type="text" id="name" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">メールアドレス</label>
+            <input type="email" id="email" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-label">電話番号</label>
+            <input type="tel" id="phone" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="service" class="form-label">サービス内容</label>
+            <select id="service" class="form-select" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="gel">ジェルネイル</option>
+              <option value="art">ネイルアート</option>
+              <option value="care">ケア&メンテナンス</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date" class="form-label">ご希望日</label>
+            <input type="date" id="date" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="time" class="form-label">ご希望時間</label>
+            <select id="time" class="form-select" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+              <option value="13:00">13:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+              <option value="17:00">17:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">ご要望（任意）</label>
+            <textarea id="message" class="form-textarea"></textarea>
+          </div>
+          <button type="submit" class="btn form-submit">予約を確定する</button>
+        </form>
       </div>
-    </header>
-  
-    <!-- ヒーローセクション -->
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <h1 class="hero-title">洗練された空間で特別なひとときを</h1>
-        <p class="hero-subtitle">お客様に最高のネイルサービスをお届けします。</p>
-        <div class="btn-group">
-          <a href="#reservation" class="btn">今すぐ予約</a>
-          <a href="#services" class="btn btn-secondary">サービスを詳しく見る</a>
-        </div>
-      </div>
-    </section>
-  
-    <!-- 特徴セクション -->
-    <section id="features" class="section features active">
-      <div class="container">
-        <h2 class="section-title">特徴</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <img src="https://via.placeholder.com/400x300" alt="特徴1" class="feature-img">
-            <div class="feature-content">
-              <h3 class="feature-title">快適な空間</h3>
-              <p class="feature-desc">リラックスできる空間で、最高の施術をお楽しみください。</p>
-            </div>
-          </div>
-          <div class="feature-card">
-            <img src="https://via.placeholder.com/400x300" alt="特徴2" class="feature-img">
-            <div class="feature-content">
-              <h3 class="feature-title">プロフェッショナルなスタッフ</h3>
-              <p class="feature-desc">経験豊富なスタッフが、お客様一人ひとりに合ったサービスを提供します。</p>
-            </div>
-          </div>
-          <div class="feature-card">
-            <img src="https://via.placeholder.com/400x300" alt="特徴3" class="feature-img">
-            <div class="feature-content">
-              <h3 class="feature-title">高品質な材料</h3>
-              <p class="feature-desc">使用する材料はすべて高品質なものを選んでいます。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- サービスセクション -->
-    <section id="services" class="section services active">
-      <div class="container">
-        <h2 class="section-title">サービス</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <img src="https://via.placeholder.com/400x300" alt="サービス1" class="service-img">
-            <div class="service-content">
-              <h3 class="service-title">ジェルネイル</h3>
-              <span class="service-price">¥5,000</span>
-              <p class="service-desc">長持ちするジェルネイルで、指先に華やかさを。</p>
-            </div>
-          </div>
-          <div class="service-card">
-            <img src="https://via.placeholder.com/400x300" alt="サービス2" class="service-img">
-            <div class="service-content">
-              <h3 class="service-title">フットネイル</h3>
-              <span class="service-price">¥6,000</span>
-              <p class="service-desc">リラックスしながら、美しい足元を演出します。</p>
-            </div>
-          </div>
-          <div class="service-card">
-            <img src="https://via.placeholder.com/400x300" alt="サービス3" class="service-img">
-            <div class="service-content">
-              <h3 class="service-title">スカルプチャーネイル</h3>
-              <span class="service-price">¥8,000</span>
-              <p class="service-desc">より個性的なデザインをお求めの方に。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- ギャラリーセクション -->
-    <section id="gallery" class="section gallery active">
-      <div class="container">
-        <h2 class="section-title">ギャラリー</h2>
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="https://via.placeholder.com/600x400" alt="ギャラリー1" class="gallery-img">
-            <div class="gallery-overlay">施術例1</div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://via.placeholder.com/600x400" alt="ギャラリー2" class="gallery-img">
-            <div class="gallery-overlay">施術例2</div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://via.placeholder.com/600x400" alt="ギャラリー3" class="gallery-img">
-            <div class="gallery-overlay">施術例3</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- 予約セクション -->
-    <section id="reservation" class="section reservation active">
-      <div class="container">
-        <h2 class="section-title">予約</h2>
-        <div class="reservation-container">
-          <div class="reservation-content">
-            <h3 class="reservation-title">オンラインで簡単に予約</h3>
-            <p>以下のフォームから、希望日時を選んで予約できます。</p>
-          </div>
-          <form class="reservation-form">
-            <div class="form-group">
-              <label for="name" class="form-label">お名前</label>
-              <input type="text" id="name" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label for="email" class="form-label">メールアドレス</label>
-              <input type="email" id="email" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label for="date" class="form-label">希望日時</label>
-              <input type="date" id="date" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label for="service" class="form-label">サービス</label>
-              <select id="service" class="form-select" required>
-                <option value="gel">ジェルネイル</option>
-                <option value="foot">フットネイル</option>
-                <option value="sculpture">スカルプチャーネイル</option>
-              </select>
-            </div>
-            <button type="submit" class="form-button">予約する</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  
-    <!-- フッター -->
-    <footer class="footer">
-      <p>© 2025 ネイルサロン AMY. All rights reserved.</p>
-      <a href="#">プライバシーポリシー</a> | <a href="#">お問い合わせ</a>
-    </footer>
-  </body>
-  </html>
+    </div>
+  </section>
 
-  
+  <!-- お問い合わせセクション -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">アクセス</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">&#128205;</div>
+          <h3 class="contact-title">住所</h3>
+          <p class="contact-text">〒106-0032<br>東京都港区六本木5-2-5<br>六本木サロンビル 3F</p>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">&#128222;</div>
+          <h3 class="contact-title">電話番号</h3>
+          <p class="contact-text">03-1234-5678</p>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">&#128337;</div>
+          <h3 class="contact-title">営業時間</h3>
+          <p class="contact-text">平日: 10:00 - 19:00<br>土日祝: 9:00 - 18:00<br>定休日: 毎週月曜日</p>
+        </div>
+      </div>
+      <div class="map-container">
+        <div class="map-placeholder">Google Mapが表示されます</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <div class="footer-logo">Nail Salon <span>AMY</span></div>
+          <p>美しさと癒しをお届けする場所。<br>あなたの指先から、内側から輝く美しさを引き出します。</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon">&#xf09a;</a>
+            <a href="#" class="social-icon">&#xf099;</a>
+            <a href="#" class="social-icon">&#xf16d;</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title">メニュー</h3>
+          <ul class="footer-links">
+            <li><a href="#features">特徴</a></li>
+            <li><a href="#services">メニュー</a></li>
+            <li><a href="#gallery">ギャラリー</a></li>
+            <li><a href="#reservation">ご予約</a></li>
+            <li><a href="#contact">アクセス</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title">サービス</h3>
+          <ul class="footer-links">
+            <li><a href="#services">ジェルネイル</a></li>
+            <li><a href="#services">ネイルアート</a></li>
+            <li><a href="#services">ケア&メンテナンス</a></li>
+            <li><a href="#services">パラジェル</a></li>
+            <li><a href="#services">フットネイル</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Nail Salon AMY. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // スクロール時のヘッダースタイル変更
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // モバイルメニュートグル
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuBtn.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+    
+    // ナビゲーションリンククリック時にメニューを閉じる
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+      });
+    });
+    
+    // スクロールアニメーション
+    const sections = document.querySelectorAll('.section');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+    
+    // 予約フォーム送信処理
+    const form = document.querySelector('.reservation-form');
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // フォーム送信処理をここに実装
+      alert('ご予約ありがとうございます。確認のメールをお送りいたします。');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
